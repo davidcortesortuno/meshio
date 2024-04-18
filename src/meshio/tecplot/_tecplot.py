@@ -494,7 +494,9 @@ def write(filename, mesh, ncol=20, data_formats={}):
 
         # Zone data
         for i, arr in enumerate(data):
-            _write_table(f, arr, ncol=ncol, data_format=data_formats.get(variables[i], ""))
+            _write_table(
+                f, arr, ncol=ncol, data_format=data_formats.get(variables[i], "")
+            )
 
         # CellBlock
         for cell in cells:
