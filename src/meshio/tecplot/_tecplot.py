@@ -377,6 +377,10 @@ def _read_zone_data(f, num_data, num_cells, zone_format):
 
 
 def write(filename, mesh, ncol=20, data_formats={}):
+    # ncol is the number of columns for saving the data
+    # data_formats is an optional dict containing a string format
+    # for every data variable (used as key), e.g. {"X": ".5f"}
+
     # Check cell types
     cell_types = []
     cell_blocks = []
@@ -490,7 +494,6 @@ def write(filename, mesh, ncol=20, data_formats={}):
 
         # Zone data
         for i, arr in enumerate(data):
-            # Try to get format from dict, otherwise return empty str ""
             _write_table(f, arr, ncol=ncol, data_format=data_formats.get(variables[i], ""))
 
         # CellBlock
